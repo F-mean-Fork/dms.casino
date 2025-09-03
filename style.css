@@ -56,10 +56,12 @@ body{
 
 .img_logo{
   position: absolute;
-  right: 0px;
-  bottom: 0px;
+  right: 50%;
+  top: 0;
+  transform: translate(50%, 0);
   width: 100px;
   aspect-ratio: 1;
+  opacity:80%;
 }
 
 .img_name {
