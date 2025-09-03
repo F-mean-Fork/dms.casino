@@ -1,0 +1,276 @@
+:root {
+  --icon-width: 79px;
+  --icon-height: 79px;
+  --num-icons: 10;
+}
+
+@font-face {
+  font-family: 'MTSWide';
+  src: url('fonts/MTSWide-Bold-XQ34CV62.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MTSWide';
+  src: url('fonts/MTSWide-Medium-MH5A5AEJ.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+#albumPage {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: "MTSWide", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: rgb(223, 210, 210);
+    font-size: 80px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-image: url(img/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img_logo{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 100px;
+  aspect-ratio: 1;
+}
+
+.img_name {
+    width: calc(100vw / 1.1);
+    height: auto;
+    object-fit: contain;
+}
+
+.casino_wrapper {
+    width: calc(3.5 * var(--icon-width));
+    height: calc(3 * var(--icon-height));
+    display: flex;
+    justify-content: space-between;
+    padding: calc(0.3 * var(--icon-width));
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    transform: scale(1.5);
+    transform-origin: center;
+}
+
+@keyframes win1 {
+  0% {
+    background: linear-gradient(45deg, orange 0%, yellow 100%);
+    box-shadow: 0 0 80px orange;
+  }
+  100% {
+    background: linear-gradient(45deg, #3b3737 0%, #555 100%);
+    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.casino_wrapper.win1 {
+  animation: win1 200ms steps(2, end) infinite;
+}
+
+.reel {
+  position: relative;
+  width: calc(var(--icon-width));
+  height: calc(3 * var(--icon-height));
+  border: 1px solid #f5f3f3;
+  border-radius: 3px;
+  overflow: hidden;
+  background-image: url(img/slots.png);
+  background-position: 0 0;
+  background-repeat: repeat-y;
+}
+
+.reel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none; 
+  z-index: 1;
+}
+
+.button {
+  margin-top: 50px;
+  font-family: "MTSWide", sans-serif;
+  font-weight: bold;
+  width: fit-content;
+  display: inline-block;
+  cursor: pointer;
+  background: #008500;
+  padding: 15px 40px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(#ff6b2b);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(#ff6b2b);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(#ff6b2b);
+}
+
+.button h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(223, 210, 210);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+#clicksLeft {
+    font-family: "MTSWide", sans-serif;
+    font-weight: bold;
+    color: rgb(223, 210, 210);
+}
+
+.info{
+  display: block;
+  width: 35%;
+  min-width: calc(4.5 * var(--icon-width));
+  font-size: 10px;
+  text-align: center;
+  opacity: 50%;
+}
+
+/* Финальный экран */
+#finalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: 'WDXL Lubrifont TC', sans-serif;
+    text-align: center;
+    z-index: 1000;
+}
+
+.final-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.final-text {
+    font-size: clamp(28px, calc(100vw / 20), 45px);
+    font-family: "MTSWide", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    overflow: hidden;
+    word-break: break-word;
+    margin-bottom: clamp(15px, 4vw, 30px);
+}
+
+.final-text span.highlight {
+    color: #008500;
+    font-weight: bold;
+}
+
+.claim-button {
+    padding: 12px 24px;
+    font-size: clamp(28px, calc(100vw / 20), 45px);
+    font-weight: bold;
+    background: linear-gradient(45deg, #964400, #b85400);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 45px rgba(#ff5d17);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.claim-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 45px rgba(#ff5d17);
+}
+
+.claim-button:active {
+    transform: translateY(0);
+}
+
+.claim-button{
+  font-family: "MTSWide", sans-serif;
+  font-weight: bold;
+}
+
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .wrapper {
+      padding: 10px;
+      justify-content: space-evenly;
+
+    }
+
+    .button{
+      margin-top: 0px;
+    }
+    .button h2 {
+        font-size: 24px;
+    }
+
+    .casino_wrapper {
+    transform: scale(1);
+  }
+
+}
+
+/* Защита от переносов */
+#finalOverlay * {
+    user-select: none;
+    -webkit-user-select: none;
+}
