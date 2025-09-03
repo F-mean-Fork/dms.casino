@@ -38,6 +38,8 @@ body{
     color: rgb(223, 210, 210);
     font-size: 80px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    width: 100%;
 }
 
 .wrapper {
@@ -253,7 +255,6 @@ body{
 /* Адаптация для мобильных */
 @media (max-width: 600px) {
     .wrapper {
-      padding: 10px;
       justify-content: space-evenly;
 
     }
@@ -263,6 +264,10 @@ body{
     }
     .button h2 {
         font-size: 24px;
+    }
+
+    .claim-button{
+      font-size: 20px;
     }
 
     .casino_wrapper {
