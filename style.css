@@ -52,21 +52,18 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .img_logo{
-  position: absolute;
-  right: 50%;
-  top: 0;
-  transform: translate(50%, 0);
   width: 100px;
   aspect-ratio: 1;
   opacity:80%;
 }
 
 .img_name {
+    margin-top: -100px;
     width: calc(100vw / 1.1);
     height: auto;
     object-fit: contain;
@@ -254,11 +251,10 @@ body{
 
 /* Адаптация для мобильных */
 @media (max-width: 600px) {
-    .wrapper {
-      justify-content: space-evenly;
-
-    }
-
+  .img_name {
+    margin-top: -60px;
+    width: calc(100vw / 1.05);
+  }
     .button{
       margin-top: 0px;
     }
